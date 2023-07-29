@@ -1,14 +1,24 @@
+import React from "react";
+import ProductPage from "./products";
+
+const HomePage = ({allProducts}) => {
+  return <div>
+    <ProductPage allProducts={allProducts}></ProductPage>
+  </div>;
+};
+
+export default HomePage;
 
 
-// const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
-  
-  return (
-   <div className="min-h-screen">
-    <h2>Cheap PC builder Home page</h2>
-   </div>
-  )
-}
+export const getStaticProps = async () => {
+  const res = await fetch("https://pc-builder-server-indol.vercel.app/api/v1/pc");
+  const data = await res.json();
 
 
+  return {
+    props: {
+      allProducts: data?.data,
+    },
+    // revalidate: 30,
+  };
+};

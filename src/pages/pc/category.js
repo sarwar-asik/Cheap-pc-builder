@@ -15,8 +15,8 @@ const CategoryPage = ({ category }) => {
 console.log(session?.user?.email);
 
 //   ! cart data >>
-const {data} = useGetCategoryQuery({name,user:session?.user?.name})
-console.log(data);
+const {data} = useGetCategoryQuery({category:category?.name,user:session?.user?.name})
+console.log(data?.data);
 
 
 
@@ -36,12 +36,18 @@ console.log(data);
         </aside>
       </div>
       <div>
-        <Link
-          href={`/pc/${name}`}
-          className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg w-full"
-        >
-          Choose
-        </Link>
+
+       {data?.data.category === name ?
+       <>achi</>
+       :
+       <Link
+       href={`/pc/${name}`}
+       className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg w-full"
+     >
+       Choose
+     </Link>
+
+       }
       </div>
     </div>
   );
