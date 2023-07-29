@@ -1,25 +1,23 @@
-import { Button, Card, Space, Typography } from "antd";
-import Image from "next/image";
+import { Button, Card, Image, Space, Typography } from "antd";
 
 const { Title, Text } = Typography;
 
 const ProductDetails = ({ product }) => {
-//   console.log(product);
+  //   console.log(product);
   return (
     <div>
-      <h2>Product Details Page</h2>
+      <h2 className="text-2xl my-2 font-extrabold ">Product Details Page</h2>
       <Card
         hoverable
-        // cover={}
+        cover={ <Image
+            className="w-full h-[300px]"
+            height={300}
+            alt={product.productName}
+            src={product.image}
+          />}
         className="mb-4"
       >
-        <Image
-          height={200}
-          width={300}
-          className="w-full h-[400px]"
-          alt={product.productName}
-          src={product.image}
-        />
+       
         <Space direction="vertical" size={18}>
           <div className="block lg:flex items-center justify-between">
             <section className="flex flex-col my-2">
@@ -43,7 +41,7 @@ const ProductDetails = ({ product }) => {
             </section>
 
             <div className="">
-              <Text strong >Key Features:</Text>
+              <Text strong>Key Features:</Text>
               {Object.entries(product.keyFeatures).map(([key, value]) => (
                 <div key={key}>
                   <Text strong>{key}:</Text> <Text>{value}</Text>

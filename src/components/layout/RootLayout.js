@@ -12,9 +12,12 @@ import {
 import { Layout, Menu, Button, theme } from "antd";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import Navbar from "@/pages/nav";
 const { Header, Sider, Content } = Layout;
 
 const RootLayout = ({ children }) => {
+
+  // console.log(categoriesData,"cccccccccccc from rootLayout");
   // ! for ant
   const [collapsed, setCollapsed] = useState(false);
   const {
@@ -28,27 +31,27 @@ const RootLayout = ({ children }) => {
 
   const categories = [
     {
-      name: "CPU",
+      category: "CPU",
       link: "/pc/CPU",
     },
     {
-      name: "Motherboard",
+      category: "Motherboard",
       link: "/pc/Motherboard",
     },
     {
-      name: "RAM",
+      category: "RAM",
       link: "/pc/RAM",
     },
     {
-      name: "Power Supply Unit",
+      category: "Power Supply Unit",
       link: "/pc/PowerSupplyUnit",
     },
     {
-      name: "Storage Device",
+      category: "Storage Device",
       link: "/pc/StorageDevice",
     },
     {
-      name: "Monitor",
+      category: "Monitor",
       link: "/pc/Monitor",
     },
   ];
@@ -102,11 +105,14 @@ const RootLayout = ({ children }) => {
               defaultSelectedKeys={["2"]}
               title="Categories"
             >
-             {
-              categories?.map(category=> <Menu.Item key={category?.name}>
-              <Link href={category?.link}>{category?.name}</Link>
+             {/* {
+              categories?.map(category=> <Menu.Item key={category?.category}>
+              <Navbar></Navbar>
             </Menu.Item>)
-             }
+             } */}
+             <Menu.Item >
+              <Navbar></Navbar>
+            </Menu.Item>
             
             </Menu.SubMenu>
           </Menu>
@@ -146,3 +152,5 @@ const RootLayout = ({ children }) => {
   );
 };
 export default RootLayout;
+
+
