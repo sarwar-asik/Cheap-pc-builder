@@ -10,19 +10,62 @@ import {
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePostProductMutation } from "@/redux/api/api";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { Button, message } from 'antd';
 
 const { Meta } = Card;
 
+
+
+
+
 const PcDetails = ({ products }) => {
+  const [postProduct, { isLoading, isError, isSuccess }] =
+  usePostProductMutation();
+
+  const router= useRouter()
+
+  // ! user ///
+  const {data:session} = useSession()
+  // console.log(session?.user?.name);
   // console.log(products);
 
-  if (!products?.length) {
+  if (products?.length < 1) {
     return <h2>Loading .......</h2>;
   }
+
+
+  // ! Ant id Toast
+  const [messageApi, contextHolder] = message.useMessage();
+  const info = () => {
+    messageApi.info('Hello, Ant Design!');
+  };
+
+
+
+  // ! for addPc
+ 
+
+  const HandleAddProduct = (data) => {
+    const readyData = {user:session?.user?.name, category:data?. category,productName:data?._id};
+    console.log(readyData);
+    postProduct({ readyData });
+  };
+
+  console.log(isSuccess,"isSuccess");
+  if(isSuccess){
+    messageApi.info('Successfully Added');
+    router.push("/pc")
+  }
+
+  // console.log(isSuccess);
 
   return (
     <div>
       <h3>Pc Details</h3>
+      {contextHolder}
 
       <Row
         gutter={{
@@ -72,6 +115,8 @@ const PcDetails = ({ products }) => {
                   <h3>Status :: {status}</h3>
                   <h3>Rating :: {individualRating}</h3>
                 </section>
+
+                <button className="bg-slate-700 p-2 text-white rounded-sm my-2" onClick={()=>HandleAddProduct(product)}>Add To Builder</button>
               </Card>
             </Col>
           );
@@ -82,7 +127,6 @@ const PcDetails = ({ products }) => {
 };
 
 export default PcDetails;
-
 
 export const getStaticPaths = async () => {
   const url = `https://pc-builder-server-indol.vercel.app/api/v1/pc/`;
@@ -113,7 +157,6 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       products: data?.data,
-      
     },
   };
 };

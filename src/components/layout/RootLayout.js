@@ -61,7 +61,7 @@ const RootLayout = ({ children }) => {
         }}
       >
         <Sider trigger={null} collapsible collapsed={collapsed}>
-          <div className="demo-logo-vertical text-white font-bold text-[2em] px-2">
+          <div className={`demo-logo-vertical text-white font-bold ${collapsed?'px-1':"text-[2em] px-2"}`}>
             Cheap PC Builder
           </div>
           <Menu theme="dark" mode="inline">
@@ -76,6 +76,9 @@ const RootLayout = ({ children }) => {
                     Logout{" "}
                   </Link>
                 </Menu.Item>
+                <Menu.Item icon={<PlusSquareOutlined />}>
+              <Link href="/pc">PC Builder. </Link>
+            </Menu.Item>
               </>
             ) : (
               <>
@@ -88,9 +91,7 @@ const RootLayout = ({ children }) => {
               </>
             )}
 
-            <Menu.Item icon={<PlusSquareOutlined />}>
-              <Link href="/pc">PC Builder. </Link>
-            </Menu.Item>
+           
             {/* <Menu.Item>
               <Link href="/">Home </Link>
             </Menu.Item> */}

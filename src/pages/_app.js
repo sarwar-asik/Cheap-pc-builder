@@ -1,15 +1,19 @@
 import RootLayout from "@/components/layout/RootLayout";
+import store from "@/redux/store";
 import "@/styles/globals.css";
 import { SessionProvider } from "next-auth/react"
+import { Provider } from "react-redux";
 
 export default function App({ Component, pageProps:{session,...pageProps} }) {
   const getLayout = Component.getLayout || ((page) => page);
   return (
-    <SessionProvider session={session}>
+   <Provider store={store}>
+     <SessionProvider session={session}>
      {/* { getLayout(<Component {...pageProps} />)} */}
      <RootLayout>
      <Component {...pageProps} />
      </RootLayout>
     </SessionProvider>
+   </Provider>
   );
 }

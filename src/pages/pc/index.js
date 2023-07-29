@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import CategoryPage from "./category";
 
 const PcBuilderPage = () => {
   const categories = [
@@ -38,34 +39,10 @@ const PcBuilderPage = () => {
   ];
   return (
     <div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 gap-4">
         {categories.map((category, index) => {
-          const { imageSrc, name } = category;
           return (
-            <div
-              key={index + 1}
-              className="bg-white rounded-lg shadow-md p-4 block lg:flex justify-around items-baseline gap-3"
-            >
-              <div className="flex flex-col items-center justify-center gap-3 mb-2">
-                <Image
-                  src={imageSrc}
-                  alt={name}
-                  height={120}
-                  width={200}
-                  layout="responsive"
-                  className="rounded"
-                />
-                <h3 className="text-lg font-semibold ml-2">{name}</h3>
-              </div>
-              <div>
-                <Link
-                  href={`/pc/${name}`}
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg w-full"
-                >
-                  Choose
-                </Link>
-              </div>
-            </div>
+            <CategoryPage key={index + 1} category={category}></CategoryPage>
           );
         })}
       </div>
