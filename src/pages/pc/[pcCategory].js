@@ -113,22 +113,7 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       products: data?.data,
+      
     },
   };
 };
-
-// export const getServerSideProps = async (context) => {
-//   const { params } = context;
-
-//   const url = `https://pc-builder-server-indol.vercel.app/api/v1/pc/category?category=${params?.pcCategory}`;
-//   // console.log(url);
-//   const res = await fetch(url);
-//   const data = await res.json();
-//   // console.log(data?.data);
-//   return {
-//     props: {
-//       products: data?.data,
-//     },
-//   };
-
-// };
