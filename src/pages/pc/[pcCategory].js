@@ -17,7 +17,7 @@ const PcDetails = ({ products }) => {
   const router = useRouter();
 
   // ! user ///
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
 
   if (products?.length < 1) {
     return <h2>Loading .......</h2>;
@@ -93,12 +93,13 @@ const PcDetails = ({ products }) => {
                   <h3>Rating :: {individualRating}</h3>
                 </section>
 
+               {session?.user&&
                 <button
-                  className="bg-slate-700 p-2 text-white rounded-sm my-2"
-                  onClick={() => HandleAddProduct(product)}
-                >
-                  Add To Builder
-                </button>
+                className="bg-slate-700 p-2 text-white rounded-sm my-2"
+                onClick={() => HandleAddProduct(product)}
+              >
+                Add To Builder
+              </button>}
               </Card>
             </Col>
           );

@@ -17,7 +17,7 @@ const PcBuilderPage = ({ categories }) => {
 
   const completeHandler = ()=>{
     success("SuccessFully Built Pc")
-    console.log(success);
+    // console.log(success);
   }
 
   return (
