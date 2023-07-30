@@ -39,7 +39,7 @@ const CategoryPage = ({ categoryData }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-md px-2 block lg:flex justify-between items-center gap-3 ">
-      <div className="flex  items-center justify-center gap-3 mb-2">
+      <div className="block lg:flex  items-center justify-center gap-3 mb-2">
         <Image
           src={categoryData?.imageSrc}
           alt={categoryData?.category}
@@ -49,12 +49,13 @@ const CategoryPage = ({ categoryData }) => {
           className="rounded"
         />
         <aside className="flex flex-col ">
-          <h3 className="text-lg font-semibold ml-2">{categoryData?.category}</h3>
+          <h3 className="text-lg font-semibold ml-2">Category: {categoryData?.category}</h3>
         </aside>
       </div>
       <div>
         {added?._id ? (
-          <>
+          <section className="block lg:flex">
+            <aside>
             <Image
               src={added?.image}
               alt={added?.category}
@@ -65,11 +66,12 @@ const CategoryPage = ({ categoryData }) => {
             />
             <h2>{added?.productName}</h2>
             <h2>Status ::: {added?.status}</h2>
+            </aside>
            <button className="p-3 text-2xl bg-slate-300 text-red-600 rounded-full" onClick={()=>handleRemove(added)} ><CloseOutlined /></button>
 
 
            
-          </>
+          </section>
         ) : (
           <Link
             href={`/pc/${categoryData?.category}`}
