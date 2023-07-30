@@ -67,7 +67,7 @@ export const getStaticPaths = async () => {
     params: { productsId: product?._id }, // Use pcId instead of productsId
   }));
 
-  console.log(products?.data?.category);
+  // console.log(products?.data?.category);
 
   return { paths, fallback: false };
 };

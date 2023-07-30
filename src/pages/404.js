@@ -8,17 +8,17 @@ import React from 'react';
 const ERrorPage = () => {
     const router = useRouter();
 
-    // setTimeout(()=>{
-    //     router.push("/")
-    // },7000)
+    setTimeout(()=>{
+        router.push("/")
+    },7000)
 
   return (
     <div style={{ textAlign: "center" }}>
       <Head>
-        <title>PH-News-404 Not Found</title>
+        <title>Cheap PC Not Found</title>
         <meta
           name="description"
-          content="This is news portal of programming hero made by next-js"
+          content="This is Cheap PC of Sarwar made by next-js"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

@@ -16,7 +16,6 @@ import Navbar from "@/pages/nav";
 const { Header, Sider, Content } = Layout;
 
 const RootLayout = ({ children }) => {
-
   // console.log(categoriesData,"cccccccccccc from rootLayout");
   // ! for ant
   const [collapsed, setCollapsed] = useState(false);
@@ -64,7 +63,11 @@ const RootLayout = ({ children }) => {
         }}
       >
         <Sider trigger={null} collapsible collapsed={collapsed}>
-          <div className={`demo-logo-vertical text-white font-bold ${collapsed?'px-1':"text-[2em] px-2"}`}>
+          <div
+            className={`demo-logo-vertical text-white font-bold ${
+              collapsed ? "px-1" : "text-[2em] px-2"
+            }`}
+          >
             Cheap PC Builder
           </div>
           <Menu theme="dark" mode="inline">
@@ -80,8 +83,8 @@ const RootLayout = ({ children }) => {
                   </Link>
                 </Menu.Item>
                 <Menu.Item icon={<PlusSquareOutlined />}>
-              <Link href="/pc">PC Builder. </Link>
-            </Menu.Item>
+                  <Link href="/pc">PC Builder. </Link>
+                </Menu.Item>
               </>
             ) : (
               <>
@@ -94,7 +97,6 @@ const RootLayout = ({ children }) => {
               </>
             )}
 
-           
             {/* <Menu.Item>
               <Link href="/">Home </Link>
             </Menu.Item> */}
@@ -105,15 +107,17 @@ const RootLayout = ({ children }) => {
               defaultSelectedKeys={["2"]}
               title="Categories"
             >
-             {/* {
-              categories?.map(category=> <Menu.Item key={category?.category}>
+              {categories?.map((category) => (
+                <Menu.Item key={category?.category}>
+                  <Link  href={`/pc/${category.category}`}>
+                    {category.category}
+                  </Link>
+                </Menu.Item>
+              ))}
+
+              {/* <Menu.Item >
               <Navbar></Navbar>
-            </Menu.Item>)
-             } */}
-             <Menu.Item >
-              <Navbar></Navbar>
-            </Menu.Item>
-            
+            </Menu.Item> */}
             </Menu.SubMenu>
           </Menu>
         </Sider>
@@ -152,5 +156,4 @@ const RootLayout = ({ children }) => {
   );
 };
 export default RootLayout;
-
 

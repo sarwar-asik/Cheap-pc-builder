@@ -19,7 +19,7 @@ export default Navbar;
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:5000/api/v1/category");
   const data = await res.json();
-  console.log(data, "from navbar");
+  // console.log(data, "from navbar");
 
   return {
     props: {

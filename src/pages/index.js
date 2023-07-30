@@ -10,6 +10,9 @@ const HomePage = ({allProducts}) => {
 export default HomePage;
 
 
+
+
+
 export const getStaticProps = async () => {
   const res = await fetch("https://pc-builder-server-indol.vercel.app/api/v1/pc");
   const data = await res.json();

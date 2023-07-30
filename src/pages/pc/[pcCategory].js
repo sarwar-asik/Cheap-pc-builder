@@ -10,7 +10,7 @@ import {
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePostProductMutation } from "@/redux/api/api";
+// import { usePostProductMutation } from "@/redux/api/api";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { Button, message } from 'antd';
@@ -22,8 +22,8 @@ const { Meta } = Card;
 
 
 const PcDetails = ({ products }) => {
-  const [postProduct, { isLoading, isError, isSuccess }] =
-  usePostProductMutation();
+  // const [postProduct, { isLoading, isError, isSuccess }] =
+  // usePostProductMutation();
 
   const router= useRouter()
 
@@ -51,14 +51,14 @@ const PcDetails = ({ products }) => {
   const HandleAddProduct = (data) => {
     const readyData = {user:session?.user?.name, category:data?. category,productName:data?._id};
     console.log(readyData);
-    postProduct({ readyData });
+    // postProduct({ readyData });
   };
 
-  console.log(isSuccess,"isSuccess");
-  if(isSuccess){
-    messageApi.info('Successfully Added');
-    router.push("/pc")
-  }
+  // console.log(isSuccess,"isSuccess");
+  // if(isSuccess){
+  //   messageApi.info('Successfully Added');
+  //   router.push("/pc")
+  // }
 
   // console.log(isSuccess);
 
@@ -138,7 +138,7 @@ export const getStaticPaths = async () => {
     params: { pcCategory: product?.category }, // Use pcId instead of pcCategory
   }));
 
-  console.log(products?.data?.category);
+  // console.log(products?.data?.category);
 
   return { paths, fallback: false };
 };
@@ -152,7 +152,7 @@ export const getStaticProps = async (context) => {
     `https://pc-builder-server-indol.vercel.app/api/v1/pc/category?category=${params?.pcCategory}`
   ); // Use params.pcId here
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
 
   return {
     props: {
