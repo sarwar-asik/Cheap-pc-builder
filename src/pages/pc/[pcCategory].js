@@ -14,6 +14,8 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { Button, message } from 'antd';
+import { useDispatch } from "react-redux";
+import { addToPcBuilt } from "@/redux/fetures/builtPcSlice";
 
 const { Meta } = Card;
 
@@ -24,6 +26,7 @@ const { Meta } = Card;
 const PcDetails = ({ products }) => {
   // const [postProduct, { isLoading, isError, isSuccess }] =
   // usePostProductMutation();
+  const dispatch = useDispatch()
 
   const router= useRouter()
 
@@ -39,19 +42,25 @@ const PcDetails = ({ products }) => {
 
   // ! Ant id Toast
   const [messageApi, contextHolder] = message.useMessage();
-  const info = () => {
-    messageApi.info('Hello, Ant Design!');
+  const info = (message) => {
+    messageApi.info(message);
   };
 
 
 
   // ! for addPc
- 
 
   const HandleAddProduct = (data) => {
-    const readyData = {user:session?.user?.name, category:data?. category,productName:data?._id};
-    console.log(readyData);
+    // const readyData = {user:session?.user?.name, category:data?. category,productName:data?._id};
+    // console.log(readyData);
     // postProduct({ readyData });
+    console.log(data);
+    dispatch(addToPcBuilt(data))
+
+      router.push('/pc')
+      info("successfully added")
+   
+
   };
 
   // console.log(isSuccess,"isSuccess");

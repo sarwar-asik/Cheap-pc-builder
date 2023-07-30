@@ -1,50 +1,51 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: [],
-//   total: 0,
+    total: 0,
 };
 
-const pcBuiltSlice = createSlice({
-  name: 'pcBuilt',
+const pcSlice = createSlice({
+  name: "pcBuilt",
   initialState: initialState,
   reducers: {
-    addTopPBuilt: (state, action) => {
+    addToPcBuilt: (state, action) => {
       const existingProduct = state.products.find(
-        (product) => product._id === action.payload._id
+        (product) => product.category === action.payload.category
       );
       if (existingProduct) {
-        console.log('the product is exists');
+        console.log("the product is exists");
         // existingProduct.quantity = existingProduct.quantity + 1;
       } else {
         state.products.push({ ...action.payload });
       }
-    //   state.total += action.payload.price;
+        state.total += action.payload.price;
     },
     removeFromPcBuilt: (state, action) => {
       state.products = state.products.filter(
-        (product) => product._id !== action.payload._id
+        (product) => product.category !== action.payload.category
       );
-    //   state.total -= action.payload.price * action.payload.quantity;
+      //   state.total -= action.payload.price * action.payload.quantity;
     },
     removeOne: (state, action) => {
       const existingProduct = state.products.find(
-        (product) => product._id === action.payload._id
+        (product) => product.category === action.payload.category
       );
-      if (existingProduct ) {
-        console.log('the product is exists');
+      if (existingProduct) {
+        console.log("the product is exists");
         // existingProduct.quantity = existingProduct.quantity - 1;
       } else {
         state.products = state.products.filter(
-          (product) => product._id !== action.payload._id
+          (product) => product.category !== action.payload.category
         );
       }
 
-    //   state.total -= action.payload.price;
+      //   state.total -= action.payload.price;
     },
   },
 });
 
-export const { addToPcBuilt, removeFromPcBuilt, removeOne } = pcBuiltSlice.actions;
+export const { addToPcBuilt, removeFromPcBuilt, removeOne } =
+  pcSlice.actions;
 
-export default pcBuiltSlice.reducer;
+export default pcSlice.reducer;

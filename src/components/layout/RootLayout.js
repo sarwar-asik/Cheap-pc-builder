@@ -89,7 +89,9 @@ const RootLayout = ({ children }) => {
             ) : (
               <>
                 <Menu.Item icon={<CrownOutlined />}>
-                  <Link href="/signup">SignUP </Link>
+                  <Link href="/signup">
+                    SignUP
+                     </Link>
                 </Menu.Item>
                 <Menu.Item icon={<CrownOutlined />}>
                   <Link href="/login">Login</Link>
@@ -108,7 +110,7 @@ const RootLayout = ({ children }) => {
               title="Categories"
             >
               {categories?.map((category) => (
-                <Menu.Item key={category?.category}>
+                <Menu.Item key={category?.category} >
                   <Link  href={`/pc/${category.category}`}>
                     {category.category}
                   </Link>

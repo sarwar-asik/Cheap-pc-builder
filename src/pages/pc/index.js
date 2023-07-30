@@ -4,14 +4,14 @@ import React from "react";
 import CategoryPage from "./category";
 
 const PcBuilderPage = ({categories}) => {
-  // console.log(categories);
+  console.log(categories);
 
   return (
     <div>
       <div className="grid grid-cols-1 gap-4">
-        {categories?.map((category, index) => {
+        {categories?.map((categoryData, index) => {
           return (
-            <CategoryPage key={index + 1} category={category}></CategoryPage>
+            <CategoryPage key={index + 1} categoryData={categoryData}></CategoryPage>
           );
         })}
       </div>
