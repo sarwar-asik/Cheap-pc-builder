@@ -7,17 +7,18 @@ const AppFooter = () => {
     <Footer style={{ textAlign: "center" }}>
       <div className="block lg:flex ">
         <div>
-          {/* First column content */}
-          <h3>Our Service </h3>
+          
+          <h3 className="text-2xl font-bold font-serif">Our Service </h3>
           <p>Best quality Product</p>
           <p>Update Product</p>
           <p>PC BEst Instrument</p>
           <p>Demandble Product</p>
         </div>
         <div>
-          {/* Second column content */}
-          <h3>Column 2</h3>
-          <p>Content for Column 2</p>
+        <h3 className="text-xl font-bold font-serif mt-3">Our Location </h3>
+          <p className="font-mono text-lg ">Dhaka ,Bd</p>
+          <p className="font-mono text-lg ">Chittagong ,Bd</p>
+          <p className="font-mono text-lg ">Noakhali ,Bd</p>
         </div>
        
       </div>
