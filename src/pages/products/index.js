@@ -1,22 +1,15 @@
 import { Card, Col, Row } from "antd";
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-  ArrowRightOutlined,
-} from "@ant-design/icons";
 
 import Image from "next/image";
 import Link from "next/link";
-import mainAPi from "@/components/mainAPi";
 
 const { Meta } = Card;
 
 const ProductPage = ({ allProducts }) => {
-  console.log(allProducts);
+  
   return (
-    <div>
-      <h2>Feature Product</h2>
+    <div className="mt-3">
+      <h2 className="text-2xl font-extrabold my-2">Feature Product</h2>
       <Row
         gutter={{
           xs: 8,

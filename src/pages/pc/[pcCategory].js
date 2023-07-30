@@ -1,38 +1,27 @@
-import mainAPi from "@/components/mainAPi";
-
 import { Card, Col, Row } from "antd";
-import {CloseOutlined } from "@ant-design/icons"
+
 import Image from "next/image";
-import Link from "next/link";
-// import { usePostProductMutation } from "@/redux/api/api";
+
+
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { Button, message } from 'antd';
+import { message } from "antd";
 import { useDispatch } from "react-redux";
 import { addToPcBuilt } from "@/redux/fetures/builtPcSlice";
 
 const { Meta } = Card;
 
-
-
-
-
 const PcDetails = ({ products }) => {
-  // const [postProduct, { isLoading, isError, isSuccess }] =
-  // usePostProductMutation();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const router= useRouter()
+  const router = useRouter();
 
   // ! user ///
-  const {data:session} = useSession()
-  // console.log(session?.user?.name);
-  // console.log(products);
+  const { data: session } = useSession();
 
   if (products?.length < 1) {
     return <h2>Loading .......</h2>;
   }
-
 
   // ! Ant id Toast
   const [messageApi, contextHolder] = message.useMessage();
@@ -40,30 +29,15 @@ const PcDetails = ({ products }) => {
     messageApi.info(message);
   };
 
-
-
   // ! for addPc
 
   const HandleAddProduct = (data) => {
-    // const readyData = {user:session?.user?.name, category:data?. category,productName:data?._id};
-    // console.log(readyData);
-    // postProduct({ readyData });
     console.log(data);
-    dispatch(addToPcBuilt(data))
+    dispatch(addToPcBuilt(data));
 
-      router.push('/pc')
-      info("successfully added")
-  
-
+    router.push("/pc");
+    info("successfully added");
   };
-
-  // console.log(isSuccess,"isSuccess");
-  // if(isSuccess){
-  //   messageApi.info('Successfully Added');
-  //   router.push("/pc")
-  // }
-
-  // console.log(isSuccess);
 
   return (
     <div>
@@ -119,7 +93,12 @@ const PcDetails = ({ products }) => {
                   <h3>Rating :: {individualRating}</h3>
                 </section>
 
-                <button className="bg-slate-700 p-2 text-white rounded-sm my-2" onClick={()=>HandleAddProduct(product)}>Add To Builder</button>
+                <button
+                  className="bg-slate-700 p-2 text-white rounded-sm my-2"
+                  onClick={() => HandleAddProduct(product)}
+                >
+                  Add To Builder
+                </button>
               </Card>
             </Col>
           );
@@ -141,21 +120,16 @@ export const getStaticPaths = async () => {
     params: { pcCategory: product?.category }, // Use pcId instead of pcCategory
   }));
 
-  // console.log(products?.data?.category);
-
   return { paths, fallback: false };
 };
 
 export const getStaticProps = async (context) => {
   const { params } = context;
 
-  // console.log(params, "params");
-
   const res = await fetch(
     `https://pc-builder-server-indol.vercel.app/api/v1/pc/category?category=${params?.pcCategory}`
-  ); // Use params.pcId here
+  );
   const data = await res.json();
-  // console.log(data);
 
   return {
     props: {

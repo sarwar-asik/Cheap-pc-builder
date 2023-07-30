@@ -3,7 +3,7 @@ import { Button, Card, Image, Space, Typography } from "antd";
 const { Title, Text } = Typography;
 
 const ProductDetails = ({ product }) => {
-  //   console.log(product);
+
   return (
     <div>
       <h2 className="text-2xl my-2 font-extrabold ">Product Details Page</h2>
@@ -64,10 +64,10 @@ export const getStaticPaths = async () => {
   const products = await res.json();
 
   const paths = products?.data?.map((product) => ({
-    params: { productsId: product?._id }, // Use pcId instead of productsId
+    params: { productsId: product?._id }, 
   }));
 
-  // console.log(products?.data?.category);
+ 
 
   return { paths, fallback: false };
 };
@@ -75,13 +75,13 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { params } = context;
 
-  // console.log(params, "params");
+ 
 
   const res = await fetch(
     `https://pc-builder-server-indol.vercel.app/api/v1/pc/${params?.productsId}`
-  ); // Use params.pcId here
+  );
   const data = await res.json();
-  // console.log(data);
+
 
   return {
     props: {

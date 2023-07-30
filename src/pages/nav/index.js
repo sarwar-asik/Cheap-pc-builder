@@ -16,15 +16,15 @@ const Navbar = ({ categoryData }) => {
 
 export default Navbar;
 
-export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/category");
-  const data = await res.json();
-  // console.log(data, "from navbar");
+// export const getStaticProps = async () => {
+//   const res = await fetch("http://localhost:5000/api/v1/category");
+//   const data = await res.json();
+//   // console.log(data, "from navbar");
 
-  return {
-    props: {
-      categoryData: data?.data,
-    },
-    // revalidate: 30,
-  };
-};
+//   return {
+//     props: {
+//       categoryData: data?.data,
+//     },
+//     // revalidate: 30,
+//   };
+// };

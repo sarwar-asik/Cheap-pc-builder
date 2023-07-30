@@ -1,8 +1,8 @@
 import React from "react";
-import { Form, Input, Button, Typography } from "antd";
+
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
-const { Title } = Typography;
+
 
 const LoginPage = () => {
   const {
@@ -80,7 +80,7 @@ const LoginPage = () => {
           <button
             onClick={() =>
               signIn("github", {
-                callbackUrl: "http://localhost:3000/",
+                callbackUrl: "https://cheap-pc-builder-sarwar-asik.vercel.app/",
               })
             }
             className="flex items-center justify-center w-full  px-4 py-2 border border-gray-300 shadow-sm text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
@@ -102,7 +102,7 @@ const LoginPage = () => {
           <button
             onClick={() =>
               signIn("google", {
-                callbackUrl: "http://localhost:3000/",
+                callbackUrl: "https://cheap-pc-builder-sarwar-asik.vercel.app/",
               })
             }
             className="flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"

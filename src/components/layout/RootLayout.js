@@ -13,10 +13,11 @@ import { Layout, Menu, Button, theme } from "antd";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import Navbar from "@/pages/nav";
+import AppFooter from "../Footer";
 const { Header, Sider, Content } = Layout;
 
 const RootLayout = ({ children }) => {
-  // console.log(categoriesData,"cccccccccccc from rootLayout");
+  
   // ! for ant
   const [collapsed, setCollapsed] = useState(false);
   const {
@@ -26,7 +27,7 @@ const RootLayout = ({ children }) => {
   // ! authentication
 
   const { data: session } = useSession();
-  console.log(session);
+  
 
   const categories = [
     {
@@ -109,8 +110,8 @@ const RootLayout = ({ children }) => {
               defaultSelectedKeys={["2"]}
               title="Categories"
             >
-              {categories?.map((category) => (
-                <Menu.Item key={category?.category} >
+              {categories?.map((category,i) => (
+                <Menu.Item key={i} >
                   <Link  href={`/pc/${category.category}`}>
                     {category.category}
                   </Link>
@@ -152,8 +153,10 @@ const RootLayout = ({ children }) => {
           >
             {children}
           </Content>
+          <AppFooter></AppFooter>
         </Layout>
       </Layout>
+      
     </Layout>
   );
 };

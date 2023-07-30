@@ -3,10 +3,11 @@ import Link from "next/link";
 import React, { useState } from "react";
 import CategoryPage from "./category";
 import { useSelector } from "react-redux";
+import mainAPi from "@/components/mainAPi";
 
 const PcBuilderPage = ({categories}) => {
   const { total } = useSelector((state) => state.pcBuilt);
-  // const [added, setAdded] = useState({});
+
 
   return (
     <div>
@@ -27,7 +28,7 @@ export default PcBuilderPage;
 
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/category");
+  const res = await fetch(`${mainAPi}/category`);
   const data = await res.json();
 
 

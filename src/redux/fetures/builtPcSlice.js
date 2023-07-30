@@ -21,12 +21,7 @@ const pcSlice = createSlice({
       }
       state.total += action.payload.price;
     },
-    removeFromPcBuilt: (state, action) => {
-      state.products = state.products.filter(
-        (product) => product.category !== action.payload.category
-      );
-      //   state.total -= action.payload.price * action.payload.quantity;
-    },
+  
     removeOne: (state, action) => {
       const existingProduct = state.products.find(
         (product) => product.category === action.payload.category
@@ -46,6 +41,6 @@ const pcSlice = createSlice({
   },
 });
 
-export const { addToPcBuilt, removeFromPcBuilt, removeOne } = pcSlice.actions;
+export const { addToPcBuilt, removeOne } = pcSlice.actions;
 
 export default pcSlice.reducer;

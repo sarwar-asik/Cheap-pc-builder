@@ -11,14 +11,7 @@ export const apiSlice = createApi({
       query: ({category, user}) => `/pc-cart/${category}?user=${user}`,
       providesTags:['category']
     }),
-    // postProduct: builder.mutation({
-    //     query: ({  readyData }) => ({
-    //       url: `/pc-cart`,
-    //       method: 'POST',
-    //       body: readyData,
-    //     }),
-    //     invalidatesTags: ['category'],
-    //   }),
+    
   }),
 });
 

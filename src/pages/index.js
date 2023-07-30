@@ -1,14 +1,15 @@
 import React from "react";
 import ProductPage from "./products";
+import Banner from "@/components/Banner";
 
 const HomePage = ({allProducts}) => {
   return <div>
+    <Banner></Banner>
     <ProductPage allProducts={allProducts}></ProductPage>
   </div>;
 };
 
 export default HomePage;
-
 
 
 
