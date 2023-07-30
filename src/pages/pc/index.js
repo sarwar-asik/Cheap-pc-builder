@@ -1,17 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import CategoryPage from "./category";
+import { useSelector } from "react-redux";
 
 const PcBuilderPage = ({categories}) => {
-  console.log(categories);
+  const { total } = useSelector((state) => state.pcBuilt);
+  // const [added, setAdded] = useState({});
 
   return (
     <div>
       <div className="grid grid-cols-1 gap-4">
-        {categories?.map((categoryData, index) => {
+        <h2>Total Cost :: {total}</h2>
+        {categories?.map((categoryData, index) => { 
           return (
-            <CategoryPage key={index + 1} categoryData={categoryData}></CategoryPage>
+            <CategoryPage key={index + 1} categoryData={categoryData} ></CategoryPage>
           );
         })}
       </div>

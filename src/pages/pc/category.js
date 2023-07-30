@@ -3,27 +3,40 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {CloseOutlined } from "@ant-design/icons"
+import { Button } from "antd";
+import { removeOne } from "@/redux/fetures/builtPcSlice";
 
 const CategoryPage = ({ categoryData }) => {
+  const disPatch = useDispatch()
   const { imageSrc, category } = categoryData;
 
-  const { products } = useSelector((state) => state.pcBuilt);
+  const { products} = useSelector((state) => state.pcBuilt);
   // console.log("🚀 ~ file: category.js:12 ~ CategoryPage ~ products:", products)
 
-  const [added, setAdded] = useState({});
+  // const [added, setAdded] = useState({});
 
   // if(products){
   //  const isExist = products.filter(product =>product?.category === category)
   //  console.log(isExist);
   // }
-  useEffect(() => {
-    const isExist = products.find((product) => product?.category === category);
+
+  let added = null
+
+  const isExist = products.find((product) => product?.category === category);
     if (isExist) {
       console.log(isExist);
-      setAdded(isExist);
+      added = isExist
     }
-  }, [products, category]);
+
+  // useEffect(() => {
+  //   const isExist = products.find((product) => product?.category === category);
+  //   if (isExist) {
+  //     console.log(isExist);
+  //     added = isExist
+  //   }
+  // }, [products, category]);
   // ! auth
   const { data: session } = useSession();
 
@@ -34,6 +47,10 @@ const CategoryPage = ({ categoryData }) => {
   //   ! cart data >>
   // const {data} = useGetCategoryQuery({category:category?.name,user:session?.user?.name})
   // console.log(data?.data);
+  const handleRemove =data =>{
+    console.log(data);
+    disPatch(removeOne(data))
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-md px-2 block lg:flex justify-between items-center gap-3 ">
@@ -63,8 +80,10 @@ const CategoryPage = ({ categoryData }) => {
             />
             <h2>{added?.productName}</h2>
             <h2>Status ::: {added?.status}</h2>
+           <button className="p-3 text-2xl bg-slate-300 text-red-600 rounded-full" onClick={()=>handleRemove(added)} ><CloseOutlined /></button>
 
-            
+
+           
           </>
         ) : (
           <Link

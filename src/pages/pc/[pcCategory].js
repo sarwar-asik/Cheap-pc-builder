@@ -1,13 +1,7 @@
 import mainAPi from "@/components/mainAPi";
 
 import { Card, Col, Row } from "antd";
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-  ArrowRightOutlined,
-} from "@ant-design/icons";
-
+import {CloseOutlined } from "@ant-design/icons"
 import Image from "next/image";
 import Link from "next/link";
 // import { usePostProductMutation } from "@/redux/api/api";
@@ -59,7 +53,7 @@ const PcDetails = ({ products }) => {
 
       router.push('/pc')
       info("successfully added")
-   
+  
 
   };
 
@@ -105,7 +99,7 @@ const PcDetails = ({ products }) => {
                     height={200}
                     width={200}
                     alt="card"
-                    layout="responsive"
+                    // layout="responsive"
                   />
                 }
               >
