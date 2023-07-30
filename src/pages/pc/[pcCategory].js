@@ -17,7 +17,7 @@ const PcDetails = ({ products }) => {
   const router = useRouter();
 
   // ! user ///
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
   if (products?.length < 1) {
     return <h2>Loading .......</h2>;

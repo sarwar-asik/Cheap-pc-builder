@@ -67,7 +67,7 @@ const CategoryPage = ({ categoryData }) => {
             <h2>{added?.productName}</h2>
             <h2>Status ::: {added?.status}</h2>
             </aside>
-           <button className="p-3 text-2xl bg-slate-300 text-red-600 rounded-full" onClick={()=>handleRemove(added)} ><CloseOutlined /></button>
+           <button className="h-[1.5rem] w-[5rem] my-3 bg-slate-300 text-red-600 rounded-full" onClick={()=>handleRemove(added)} >remove<CloseOutlined /></button>
 
 
            

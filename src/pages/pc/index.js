@@ -4,19 +4,34 @@ import React, { useState } from "react";
 import CategoryPage from "./category";
 import { useSelector } from "react-redux";
 import mainAPi from "@/components/mainAPi";
-import { Button } from "antd";
+import { Button, message } from "antd";
 
 const PcBuilderPage = ({ categories }) => {
   const { products, total } = useSelector((state) => state.pcBuilt);
+  
+
+  const [messageApi, contextHolder] = message.useMessage();
+  const success = (message) => {
+    messageApi.info(message);
+  };
+
+  const completeHandler = ()=>{
+    success("SuccessFully Built Pc")
+    console.log(success);
+  }
 
   return (
     <div>
       <div className="grid grid-cols-1 gap-4">
-        <h2>Total Cost :: {total}</h2>
+        <h2>Total Cost :: ${total}</h2>
+        {contextHolder}
         {products?.length === 6 && (
-          <Button block loading={true}>
+          <div className="" onClick={()=>completeHandler()}>
+            <Button
+           block loading={true} >
             Complete Build
           </Button>
+          </div>
         )}
         {categories?.map((categoryData, index) => {
           return (
