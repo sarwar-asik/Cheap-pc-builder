@@ -1,16 +1,11 @@
 import React from "react";
-import { Form, Input, Button, Typography } from "antd";
-import { useForm } from "react-hook-form";
+import { Form, Input, Button } from "antd";
+
 import { signIn } from "next-auth/react";
-const { Title } = Typography;
+
 
 const SignUpPage = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  
 
   const onSubmit = (data) => {
     console.log(data);
@@ -24,57 +19,20 @@ const SignUpPage = () => {
         }}
       >
         <h2 className="text-3xl font-bold">SIgn Up</h2>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-xl font-bold mb-2"
-                htmlFor="email"
-              >
-                Email
-              </label>
-              <input
-                {...register("email", { required: true })}
-                type="email"
-                id="email"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
-              {errors.email && (
-                <span className="text-red-500 text-xs italic">
-                  This field is required
-                </span>
-              )}
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-xl font-bold mb-2"
-                htmlFor="password"
-              >
-                password
-              </label>
-              <input
-                {...register("password", { required: true })}
-                type="password"
-                id="password"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
-              {errors.password && (
-                <span className="text-red-500 text-xs italic">
-                  This field is required
-                </span>
-              )}
-            </div>
-          </div>
+        <Form className="mt-8 space-y-6" onFinish={onSubmit}>
+          <Form.Item label="User Name" name="name">
+            <Input placeholder="You Email"  required></Input>
+          </Form.Item>
+          <Form.Item label="UserPassword" name="password">
+            <Input placeholder="You Password"  required></Input>
+          </Form.Item>
 
-          <div>
-            <button
-              type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Sign up
-            </button>
-          </div>
-        </form>
+        <Form.Item>
+          <Button block type="default" htmlType="submit">Sign UP</Button>
+        </Form.Item>
+
+          
+        </Form>
 
         <section className="mt-7 flex flex-col gap-5">
           <button

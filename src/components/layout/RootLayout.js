@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
+  LeftSquareOutlined,
   UserOutlined,
-  VideoCameraOutlined,
   WindowsOutlined,
   CrownOutlined,
   PlusSquareOutlined,
@@ -12,12 +11,10 @@ import {
 import { Layout, Menu, Button, theme } from "antd";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
-import Navbar from "@/pages/nav";
 import AppFooter from "../Footer";
 const { Header, Sider, Content } = Layout;
 
 const RootLayout = ({ children }) => {
-  
   // ! for ant
   const [collapsed, setCollapsed] = useState(false);
   const {
@@ -27,7 +24,6 @@ const RootLayout = ({ children }) => {
   // ! authentication
 
   const { data: session } = useSession();
-  
 
   const categories = [
     {
@@ -78,7 +74,7 @@ const RootLayout = ({ children }) => {
 
             {session?.user ? (
               <>
-                <Menu.Item>
+                <Menu.Item icon={<LeftSquareOutlined />}>
                   <Link href="/" onClick={() => signOut()}>
                     Logout{" "}
                   </Link>
@@ -90,9 +86,7 @@ const RootLayout = ({ children }) => {
             ) : (
               <>
                 <Menu.Item icon={<CrownOutlined />}>
-                  <Link href="/signup">
-                    SignUP
-                     </Link>
+                  <Link href="/signup">SignUP</Link>
                 </Menu.Item>
                 <Menu.Item icon={<CrownOutlined />}>
                   <Link href="/login">Login</Link>
@@ -100,9 +94,7 @@ const RootLayout = ({ children }) => {
               </>
             )}
 
-            {/* <Menu.Item>
-              <Link href="/">Home </Link>
-            </Menu.Item> */}
+            
             <Menu.SubMenu
               key="sub1"
               icon={<UserOutlined />}
@@ -110,17 +102,15 @@ const RootLayout = ({ children }) => {
               defaultSelectedKeys={["2"]}
               title="Categories"
             >
-              {categories?.map((category,i) => (
-                <Menu.Item key={i} >
-                  <Link  href={`/pc/${category.category}`}>
+              {categories?.map((category, i) => (
+                <Menu.Item key={i}>
+                  <Link href={`/pc/${category.category}`}>
                     {category.category}
                   </Link>
                 </Menu.Item>
               ))}
 
-              {/* <Menu.Item >
-              <Navbar></Navbar>
-            </Menu.Item> */}
+              
             </Menu.SubMenu>
           </Menu>
         </Sider>
@@ -156,9 +146,7 @@ const RootLayout = ({ children }) => {
           <AppFooter></AppFooter>
         </Layout>
       </Layout>
-      
     </Layout>
   );
 };
 export default RootLayout;
-

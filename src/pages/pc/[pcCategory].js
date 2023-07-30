@@ -41,7 +41,8 @@ const PcDetails = ({ products }) => {
 
   return (
     <div>
-      <h3>Pc Details</h3>
+      
+      <h2 className="text-2xl font-extrabold my-2">Pc Details</h2>
       {contextHolder}
 
       <Row
