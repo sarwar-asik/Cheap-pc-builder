@@ -8,8 +8,8 @@ const { Meta } = Card;
 const ProductPage = ({ allProducts }) => {
   
   return (
-    <div className="mt-3">
-      <h2 className="text-2xl font-extrabold my-2">Feature Product</h2>
+    <div className="mt-7 text-center">
+      <h2 className="text-[2.1rem] font-extrabold my-2">Feature Products</h2>
       <Row
         gutter={{
           xs: 8,
@@ -35,14 +35,15 @@ const ProductPage = ({ allProducts }) => {
               <Link href={`/products/${product?._id}`}>
 
               <Card
-                style={{ width: 300 }}
+                // style={{ width: 300 }}
                 cover={
                   <Image
                     src={image}
                     height={200}
                     width={200}
                     alt="card"
-                    layout="responsive"
+                    // layout="responsive"
+                    style={{height:"300px"}}
                   />
                 }
               >

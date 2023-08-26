@@ -16,7 +16,7 @@ const { Header, Sider, Content } = Layout;
 
 const RootLayout = ({ children }) => {
   // ! for ant
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -134,8 +134,8 @@ const RootLayout = ({ children }) => {
           </Header>
           <Content
             style={{
-              margin: "24px 16px",
-              padding: 24,
+              // margin: "24px 16px",
+              // padding: 24,
               minHeight: 280,
               background: colorBgContainer,
               fontFamily: "cursive",

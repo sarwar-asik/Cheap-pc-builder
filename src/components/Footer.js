@@ -4,8 +4,8 @@ const { Footer } = Layout;
 
 const AppFooter = () => {
   return (
-    <Footer style={{ textAlign: "center" }}>
-        <h2 className="text-3xl font-extrabold font-serif">Cheap PC Parts</h2>
+    <Footer style={{ textAlign: "center" ,width:"100%"}}>
+        <h2 className="text-[2rem] font-extrabold font-serif">Cheap PC Parts</h2>
       <div className="block lg:flex justify-between">
         <div>
           

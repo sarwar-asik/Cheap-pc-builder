@@ -16,7 +16,7 @@ export const authOptions = {
     // ...add more providers here
   ],
   pages:{
-    signIn:'https://cheap-pc-builder-sarwar-asik.vercel.app/login'
+    signIn:'/login'
 }
 };
 export default NextAuth(authOptions);

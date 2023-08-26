@@ -2,7 +2,6 @@ import { Card, Col, Row } from "antd";
 
 import Image from "next/image";
 
-
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { message } from "antd";
@@ -41,8 +40,9 @@ const PcDetails = ({ products }) => {
 
   return (
     <div>
-      
-      <h2 className="text-2xl font-extrabold my-2">Pc Details</h2>
+      <h2 className="text-[1.8rem] text-center font-extrabold mt-7 mb-3">
+        Pc Details :::{" "}
+      </h2>
       {contextHolder}
 
       <Row
@@ -94,13 +94,14 @@ const PcDetails = ({ products }) => {
                   <h3>Rating :: {individualRating}</h3>
                 </section>
 
-               {session?.user&&
-                <button
-                className="bg-slate-700 p-2 text-white rounded-sm my-2"
-                onClick={() => HandleAddProduct(product)}
-              >
-                Add To Builder
-              </button>}
+                {session?.user && (
+                  <button
+                    className="bg-slate-700 p-2 text-white rounded-sm my-2"
+                    onClick={() => HandleAddProduct(product)}
+                  >
+                    Add To Builder
+                  </button>
+                )}
               </Card>
             </Col>
           );
